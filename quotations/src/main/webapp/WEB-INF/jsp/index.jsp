@@ -1,45 +1,38 @@
 <%@ include file="common/header.jsp" %>
 
 	<div class="link">
-		<h2>Create User</h2>
+		<h2>Create Quote</h2>
 		<c:if test="${saved == 'success'}">
-			<p class="success">User Created Successfully</p>
+			<p class="success">Quote Created Successfully</p>
 		</c:if>
 		<c:if test="${deleted == 'success'}">
-			<p class="success">User Deleted Successfully</p>
+			<p class="success">Quote Deleted Successfully</p>
 		</c:if>
 		<c:if test="${status == 'exist'}">
-			<p class="error">User Already Exist</p>
+			<p class="error">Quote Already Exist</p>
 		</c:if>
-		<form:form modelAttribute="user" action="/Spring3Hibernate4Annotation/create" method="post">
-			<form:label path="userName">User Name</form:label><form:input path="userName" />
-			<form:label path="firstName">First Name</form:label><form:input path="firstName" />
-			<form:label path="lastName">Last Name</form:label><form:input path="lastName" />
-			<form:label path="password">Password</form:label><form:password  path="password" />
-			<button type="submit" id="save">Save User</button><button type="submit" id="search">Search User</button>
+		<form:form modelAttribute="quote" action="/quotations/create" method="post">
+			<form:label path="quoteStr">Quote str</form:label><form:input path="quoteStr" />
+			<button type="submit" id="save">Save Quote</button><button type="submit" id="search">Search Quote</button>
 		</form:form>
 	</div>
 
 	<c:if test="${search == 'true'}">
 	<table>
 	<tr>
-	<th>User Name</th>
-	<th>First Name</th>
-	<th>Last Name</th>
+	<th>Quote Str</th>
 	<th colspan="2">Actions</th>
 	</tr>
-	<c:if test="${empty users}">
+	<c:if test="${empty quotes}">
 	<tr>
 		<td colspan="4">No results found!</td>
 	</tr>
 	</c:if>
-	<c:forEach var="current" items="${users}">
+	<c:forEach var="current" items="${quotes}">
 		<tr>
-		<td>${current.userName}</td>
-		<td>${current.firstName}</td>
-		<td>${current.lastName}</td>
-		<td><a href="/Spring3Hibernate4Annotation/edit/${current.userName}">Edit</a></td>
-		<td><a href="/Spring3Hibernate4Annotation/delete/${current.userName}">Delete</a></td>
+		<td>${current.quoteStr}</td>
+		<td><a href="/quotations/edit/${current.quoteStr}">Edit</a></td>
+		<td><a href="/quotations/delete/${current.quoteStr}">Delete</a></td>
 		</tr>
 	</c:forEach>
 	</table>
@@ -49,13 +42,13 @@
 
 	$(function() {
 		$("#save").click(function(event) {
-        	$("#user").attr("action", "/Spring3Hibernate4Annotation/create")
-			$("#user").submit();
+        	$("#quote").attr("action", "/quotations/create")
+			$("#quota").submit();
 		});
 
 		$("#search").click(function(event) {
-        	$("#user").attr("action", "/Spring3Hibernate4Annotation/search")
-			$("#user").submit();
+        	$("#quote").attr("action", "/quotations/search")
+			$("#quote").submit();
 
 		});
 	});

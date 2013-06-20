@@ -8,10 +8,10 @@ import java.util.Date;
 public class Quote {
 
     @Id
-    @Column (name = "quoteStr")
+    @Column (name = "quotestr")
     private String quoteStr;
 
-    @Column (name = "created_on", nullable = false)
+    @Column (name = "created", nullable = false)
     private Date createdOn;
 
     public Quote() {

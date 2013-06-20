@@ -35,10 +35,20 @@ public class QuoteController {
         quote.setCreatedOn(new Date());
         quoteService.saveQuote(quote);
         model.addAttribute("saved", "success");
+        
+        showAllQuotes(model);
+        
         return "index";
     }
+    
 
-    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    private void showAllQuotes(Model model) {
+        Quote empltyQuote = new Quote();
+        empltyQuote.setQuoteStr("");
+        searchQuote(model, empltyQuote);
+	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
     public String searchQuote(Model model, Quote quote) {
         List<Quote> quotes = quoteService.findQuotes(quote.getQuoteStr());
         model.addAttribute("quotes", quotes);
@@ -64,6 +74,7 @@ public class QuoteController {
         quoteService.deleteQuote(quoteStr);
         model.addAttribute("deleted", "success");
         model.addAttribute("quote", new Quote());
+        showAllQuotes(model);
         return "index";
     }
 
