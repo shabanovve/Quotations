@@ -1,6 +1,7 @@
-package com.blog.cavalr.dao.impl;
+package com.quotations.dao.impl;
 
-import com.blog.cavalr.dao.AbstractDao;
+import com.quotations.dao.AbstractDao;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,7 +1,8 @@
-package com.blog.cavalr.dao.impl;
+package com.quotations.dao.impl;
 
-import com.blog.cavalr.dao.UserDao;
-import com.blog.cavalr.entity.User;
+import com.quotations.dao.UserDao;
+import com.quotations.entity.User;
+
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;

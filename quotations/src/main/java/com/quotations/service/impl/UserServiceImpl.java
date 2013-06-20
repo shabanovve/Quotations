@@ -1,8 +1,9 @@
-package com.blog.cavalr.service.impl;
+package com.quotations.service.impl;
 
-import com.blog.cavalr.dao.UserDao;
-import com.blog.cavalr.entity.User;
-import com.blog.cavalr.service.UserService;
+import com.quotations.dao.UserDao;
+import com.quotations.entity.User;
+import com.quotations.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

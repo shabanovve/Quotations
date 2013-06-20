@@ -1,6 +1,6 @@
-package com.blog.cavalr.dao;
+package com.quotations.dao;
 
-import com.blog.cavalr.entity.User;
+import com.quotations.entity.User;
 
 import java.util.List;
 

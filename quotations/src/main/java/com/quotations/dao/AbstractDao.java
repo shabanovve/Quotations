@@ -1,4 +1,4 @@
-package com.blog.cavalr.dao;
+package com.quotations.dao;
 
 import org.hibernate.criterion.Criterion;
 

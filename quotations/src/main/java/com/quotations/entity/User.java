@@ -1,4 +1,4 @@
-package com.blog.cavalr.entity;
+package com.quotations.entity;
 
 import javax.persistence.*;
 import java.util.Date;

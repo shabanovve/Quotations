@@ -1,6 +1,6 @@
-package com.blog.cavalr.service;
+package com.quotations.service;
 
-import com.blog.cavalr.entity.User;
+import com.quotations.entity.User;
 
 import java.util.List;
 

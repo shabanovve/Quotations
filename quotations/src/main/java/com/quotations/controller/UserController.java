@@ -1,7 +1,8 @@
-package com.blog.cavalr.controller;
+package com.quotations.controller;
 
-import com.blog.cavalr.entity.User;
-import com.blog.cavalr.service.UserService;
+import com.quotations.entity.User;
+import com.quotations.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
