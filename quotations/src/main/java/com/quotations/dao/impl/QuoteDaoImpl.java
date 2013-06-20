@@ -10,19 +10,19 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class UserDaoImpl extends AbstractDaoImpl<Quote, String> implements QuoteDao {
+public class QuoteDaoImpl extends AbstractDaoImpl<Quote, String> implements QuoteDao {
 
-    protected UserDaoImpl() {
+    protected QuoteDaoImpl() {
         super(Quote.class);
     }
 
     @Override
-    public void saveQuote(Quote user) {
-        saveOrUpdate(user);
+    public void saveQuote(Quote quote) {
+        saveOrUpdate(quote);
     }
 
     @Override
-    public List<Quote> findQuotes(String userName) {
-        return findByCriteria(Restrictions.like("userName", userName, MatchMode.START));
+    public List<Quote> findQuotes(String quoteStr) {
+        return findByCriteria(Restrictions.like("quoteStr", quoteStr, MatchMode.START));
     }
 }
