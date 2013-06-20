@@ -10,35 +10,35 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("userService")
+@Service("quoteService")
 @Transactional(readOnly = true)
-public class UserServiceImpl implements QuoteService {
+public class QuoteServiceImpl implements QuoteService {
 
     @Autowired
-    private QuoteDao userDao;
+    private QuoteDao quoteDao;
 
     @Override
-    public Quote findByQuoteStr(String userName) {
-        return userDao.findById(userName);
+    public Quote findByQuoteStr(String quoteStr) {
+        return quoteDao.findById(quoteStr);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public void saveQuote(Quote user) {
-        userDao.saveQuote(user);
+    public void saveQuote(Quote quote) {
+        quoteDao.saveQuote(quote);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public void deleteQuote(String userName) {
-        Quote user = userDao.findById(userName);
-        if (user != null) {
-            userDao.delete(user);
+    public void deleteQuote(String quoteStr) {
+        Quote quote = quoteDao.findById(quoteStr);
+        if (quote != null) {
+            quoteDao.delete(quote);
         }
     }
 
     @Override
-    public List<Quote> findQuotes(String user) {
-        return userDao.findQuotes(user);
+    public List<Quote> findQuotes(String quoteStr) {
+        return quoteDao.findQuotes(quoteStr);
     }
 }
