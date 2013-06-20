@@ -1,6 +1,6 @@
 package com.quotations.controller;
 
-import com.quotations.entity.User;
+import com.quotations.entity.Quote;
 import com.quotations.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,13 @@ public class UserController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showUserForm(Model model) {
-        model.addAttribute("user",new User());
+        model.addAttribute("user",new Quote());
         return "index";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String saveUser( Model model, User user) {
-        User existing = userService.findByUserName(user.getUserName());
+    public String saveUser( Model model, Quote user) {
+        Quote existing = userService.findByUserName(user.getQuoteStr());
         if (existing != null) {
             model.addAttribute("status", "exist");
             return "index";
@@ -39,8 +39,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String searchUser(Model model, User user) {
-        List<User> users = userService.findUsers(user.getUserName());
+    public String searchUser(Model model, Quote user) {
+        List<Quote> users = userService.findUsers(user.getQuoteStr());
         model.addAttribute("users", users);
         model.addAttribute("search", true);
         return "index";
@@ -48,13 +48,13 @@ public class UserController {
 
     @RequestMapping(value = "/edit/{userName}", method = RequestMethod.GET)
     public String updateUser(Model model, @PathVariable String userName) {
-        User user = userService.findByUserName(userName);
+        Quote user = userService.findByUserName(userName);
         model.addAttribute("user", user);
         return "update";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateUser( Model model, User user) {
+    public String updateUser( Model model, Quote user) {
         userService.saveUser(user);
         model.addAttribute("saved", "success");
         return "update";
@@ -63,7 +63,7 @@ public class UserController {
     public String deleteUser(Model model, @PathVariable String userName) {
         userService.deleteUser(userName);
         model.addAttribute("deleted", "success");
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new Quote());
         return "index";
     }
 

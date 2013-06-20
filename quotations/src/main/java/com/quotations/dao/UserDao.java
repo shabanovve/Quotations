@@ -1,10 +1,10 @@
 package com.quotations.dao;
 
-import com.quotations.entity.User;
+import com.quotations.entity.Quote;
 
 import java.util.List;
 
-public interface UserDao extends AbstractDao<User, String> {
-    void saveUser(User user);
-    List<User> findUsers(String userName);
+public interface UserDao extends AbstractDao<Quote, String> {
+    void saveUser(Quote user);
+    List<Quote> findUsers(String userName);
 }

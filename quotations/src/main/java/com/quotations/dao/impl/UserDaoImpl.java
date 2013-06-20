@@ -1,7 +1,7 @@
 package com.quotations.dao.impl;
 
 import com.quotations.dao.UserDao;
-import com.quotations.entity.User;
+import com.quotations.entity.Quote;
 
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
@@ -10,19 +10,19 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class UserDaoImpl extends AbstractDaoImpl<User, String> implements UserDao {
+public class UserDaoImpl extends AbstractDaoImpl<Quote, String> implements UserDao {
 
     protected UserDaoImpl() {
-        super(User.class);
+        super(Quote.class);
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(Quote user) {
         saveOrUpdate(user);
     }
 
     @Override
-    public List<User> findUsers(String userName) {
+    public List<Quote> findUsers(String userName) {
         return findByCriteria(Restrictions.like("userName", userName, MatchMode.START));
     }
 }

@@ -1,13 +1,13 @@
 package com.quotations.service;
 
-import com.quotations.entity.User;
+import com.quotations.entity.Quote;
 
 import java.util.List;
 
 public interface UserService {
 
-    User findByUserName(String userName);
-    void saveUser(User user);
+    Quote findByUserName(String userName);
+    void saveUser(Quote user);
     void deleteUser(String userName);
-    List<User> findUsers(String user);
+    List<Quote> findUsers(String user);
 }

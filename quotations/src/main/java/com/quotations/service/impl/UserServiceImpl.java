@@ -1,7 +1,7 @@
 package com.quotations.service.impl;
 
 import com.quotations.dao.UserDao;
-import com.quotations.entity.User;
+import com.quotations.entity.Quote;
 import com.quotations.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,27 +18,27 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public User findByUserName(String userName) {
+    public Quote findByUserName(String userName) {
         return userDao.findById(userName);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public void saveUser(User user) {
+    public void saveUser(Quote user) {
         userDao.saveUser(user);
     }
 
     @Override
     @Transactional(readOnly = false)
     public void deleteUser(String userName) {
-        User user = userDao.findById(userName);
+        Quote user = userDao.findById(userName);
         if (user != null) {
             userDao.delete(user);
         }
     }
 
     @Override
-    public List<User> findUsers(String user) {
+    public List<Quote> findUsers(String user) {
         return userDao.findUsers(user);
     }
 }
