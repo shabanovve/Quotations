@@ -1,7 +1,7 @@
 package com.quotations.controller;
 
 import com.quotations.entity.Quote;
-import com.quotations.service.UserService;
+import com.quotations.service.QuoteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,56 +14,56 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-public class UserController {
+public class QuoteController {
 
     @Autowired
-    private UserService userService;
+    private QuoteService quoteService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String showUserForm(Model model) {
-        model.addAttribute("user",new Quote());
+    public String showQuoteForm(Model model) {
+        model.addAttribute("quote",new Quote());
         return "index";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String saveUser( Model model, Quote user) {
-        Quote existing = userService.findByUserName(user.getQuoteStr());
+    public String saveQuote( Model model, Quote quote) {
+        Quote existing = quoteService.findByQuoteStr(quote.getQuoteStr());
         if (existing != null) {
             model.addAttribute("status", "exist");
             return "index";
         }
-        user.setCreatedOn(new Date());
-        userService.saveUser(user);
+        quote.setCreatedOn(new Date());
+        quoteService.saveQuote(quote);
         model.addAttribute("saved", "success");
         return "index";
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String searchUser(Model model, Quote user) {
-        List<Quote> users = userService.findUsers(user.getQuoteStr());
-        model.addAttribute("users", users);
+    public String searchQuote(Model model, Quote quote) {
+        List<Quote> quotes = quoteService.findQuotes(quote.getQuoteStr());
+        model.addAttribute("quotes", quotes);
         model.addAttribute("search", true);
         return "index";
     }
 
-    @RequestMapping(value = "/edit/{userName}", method = RequestMethod.GET)
-    public String updateUser(Model model, @PathVariable String userName) {
-        Quote user = userService.findByUserName(userName);
-        model.addAttribute("user", user);
+    @RequestMapping(value = "/edit/{quoteStr}", method = RequestMethod.GET)
+    public String updateQuote(Model model, @PathVariable String quoteStr) {
+        Quote quote = quoteService.findByQuoteStr(quoteStr);
+        model.addAttribute("quote", quote);
         return "update";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateUser( Model model, Quote user) {
-        userService.saveUser(user);
+    public String updateQuote( Model model, Quote quote) {
+        quoteService.saveQuote(quote);
         model.addAttribute("saved", "success");
         return "update";
     }
-    @RequestMapping(value = "/delete/{userName}", method = RequestMethod.GET)
-    public String deleteUser(Model model, @PathVariable String userName) {
-        userService.deleteUser(userName);
+    @RequestMapping(value = "/delete/{quoteStr}", method = RequestMethod.GET)
+    public String deleteQuote(Model model, @PathVariable String quoteStr) {
+        quoteService.deleteQuote(quoteStr);
         model.addAttribute("deleted", "success");
-        model.addAttribute("user", new Quote());
+        model.addAttribute("quote", new Quote());
         return "index";
     }
 
