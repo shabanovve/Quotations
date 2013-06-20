@@ -1,6 +1,6 @@
 package com.quotations.service.impl;
 
-import com.quotations.dao.UserDao;
+import com.quotations.dao.QuoteDao;
 import com.quotations.entity.Quote;
 import com.quotations.service.QuoteService;
 
@@ -15,7 +15,7 @@ import java.util.List;
 public class UserServiceImpl implements QuoteService {
 
     @Autowired
-    private UserDao userDao;
+    private QuoteDao userDao;
 
     @Override
     public Quote findByQuoteStr(String userName) {
@@ -25,7 +25,7 @@ public class UserServiceImpl implements QuoteService {
     @Override
     @Transactional(readOnly = false)
     public void saveQuote(Quote user) {
-        userDao.saveUser(user);
+        userDao.saveQuote(user);
     }
 
     @Override
@@ -39,6 +39,6 @@ public class UserServiceImpl implements QuoteService {
 
     @Override
     public List<Quote> findQuotes(String user) {
-        return userDao.findUsers(user);
+        return userDao.findQuotes(user);
     }
 }
